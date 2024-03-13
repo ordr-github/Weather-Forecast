@@ -7,7 +7,7 @@ def get_weather(city, api_key):
     params = {
         "key": api_key,
         "q": city,
-        "days": 7,  # Fetch weather for the next 7 days
+        "days": 3,  # Fetch weather for the next 3 days
         "aqi": "yes",  # Air quality index
         "alerts": "yes"  # Weather alerts
     }
@@ -26,7 +26,7 @@ def get_weather(city, api_key):
 
 def display_weather_forecast(weather_data):
     root = tk.Tk()
-    root.title("7-Day Weather Forecast")
+    root.title("3-Day Weather Forecast")
 
     
     frame = tk.Frame(root) # Frame for better organization
@@ -39,13 +39,13 @@ def display_weather_forecast(weather_data):
 
     for idx, forecast in enumerate(weather_data['forecast']['forecastday'], start=1):
         date_label = tk.Label(frame, text=f"{forecast['date']}", font=("Helvetica", 12))
-        date_label.grid(row=idx, column=0, padx=10, pady=7, sticky="w")
+        date_label.grid(row=idx, column=0, padx=10, pady=3, sticky="w")
 
         temp_label = tk.Label(frame, text=f"{forecast['day']['avgtemp_c']}°C", font=("Helvetica", 12))
-        temp_label.grid(row=idx, column=1, padx=10, pady=7, sticky="w")
+        temp_label.grid(row=idx, column=1, padx=10, pady=3, sticky="w")
 
         desc_label = tk.Label(frame, text=f"{forecast['day']['condition']['text']}", font=("Helvetica", 12))
-        desc_label.grid(row=idx, column=2, padx=10, pady=7, sticky="w")
+        desc_label.grid(row=idx, column=2, padx=10, pady=3, sticky="w")
 
     root.mainloop()
 
